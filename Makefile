@@ -1,7 +1,8 @@
 #!/bin/make
 
 TARGET = ./main$(EXEEXT)
-SRCS = main.cpp
+#SRCS = main.cpp vector3.cpp screen.cpp color.cpp light.cpp photon.cpp sphere.cpp polygon3.cpp scene.cpp aabb3.cpp aabb3n.cpp
+SRCS = main.cpp screen.cpp color.cpp vector3.cpp light.cpp scene.cpp polygon3.cpp aabb3.cpp
 CXX = g++
 CXXFLAGS = -O3 -Wall # -g
 
