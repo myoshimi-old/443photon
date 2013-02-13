@@ -1,5 +1,7 @@
 #include "light.hpp"
 
+/** @file */
+
 Light::Light(Vector3 sv){
     position.setVector(sv);
 };

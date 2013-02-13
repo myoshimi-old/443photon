@@ -5,6 +5,8 @@
 #include "vector3.hpp"
 #include "color.hpp"
 
+/** @file */
+
 class Sphere{
 public:
     Vector3 position;

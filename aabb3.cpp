@@ -5,6 +5,8 @@
 
 using namespace std;
 
+/** @file */
+
 bool AABB3::cmpx(AABB3* a, AABB3* b){
   bool ret=false;
   if(a->max.x < b->max.x){

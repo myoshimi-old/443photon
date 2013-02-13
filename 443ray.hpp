@@ -1,6 +1,10 @@
 #ifndef _INC_443RAY
 #define _INC_443RAY
 
+/** @file 443ray.hpp
+    @brief マクロ定義
+ */
+
 #define REAL double
 #define UINT8 unsigned char
 #define UINT32 unsigned int

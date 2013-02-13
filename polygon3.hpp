@@ -4,6 +4,8 @@
 #include "vector3.hpp"
 #include "color.hpp"
 
+/** @file */
+
 //class Polygon3 : public Model{
 class Polygon3{
 public:

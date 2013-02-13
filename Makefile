@@ -5,6 +5,7 @@ TARGET = ./main$(EXEEXT)
 SRCS = main.cpp screen.cpp color.cpp vector3.cpp light.cpp scene.cpp polygon3.cpp aabb3.cpp
 CXX = g++
 CXXFLAGS = -O3 -Wall # -g
+DOXYGEN  = doxygen
 
 OPENCVINC = `pkg-config --cflags opencv`
 OPENCVLIB = `pkg-config --libs opencv`
@@ -28,7 +29,11 @@ $(TARGET): $(OBJS)
 depend:
 	$(CXX) -MM $(INCLUDE) $(CXXFLAGS) $(SRCS) > dependencies
 
+manual:
+	$(DOXYGEN)
+	(cd latex; make; dvipdfmx -q refman)
+
 clean:
 	rm -rf $(OBJS) $(TARGET)
-
+	rm -rf latex html
 

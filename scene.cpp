@@ -10,6 +10,9 @@
 #define ASCII  0
 #define BINARY 1
 
+/** @file  scene.cpp
+ *  @brief シーンクラス実装ファイル
+ */
 void convertEndian(char* array, int size){
     char tmp;
     char *head, *tail;
@@ -269,6 +272,9 @@ void Scene::generateTree(){
     tree = division(0, NumFace, 0);
 }
 
+/** @brief plyファイルの読み込み
+ *  @param[in] file 出力ファイル名
+ */
 void Scene::load_ply(string filename){
     int i;
     FILE* fp;

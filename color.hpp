@@ -3,6 +3,10 @@
 
 #include "443ray.hpp"
 
+/** @file color.hpp
+    @class Color
+    @brief 色表現クラスヘッダ
+ */
 class Color{
 public:
     UINT8 red;

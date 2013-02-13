@@ -13,8 +13,11 @@ using namespace std;
 
 double get_dtime(void);
 
+/** @file main.cpp
+    @brief main関数
+           フォトンマップの生成
+ */
 int main(int argc, char** argv){
-    int x, y;
     REAL d0, d1, d2, d3, d4;
     UINT32 screenWidth, screenHeight;
     string inputFilename, outputFilename;
@@ -73,11 +76,12 @@ int main(int argc, char** argv){
     
     Vector3 np, n, lv;
     Color c;
+    int x;
     // 画素値の設定
 #ifdef _OPENMP
 #pragma omp parallel for private(x, vv, dist,p,np,n,lv,c)
 #endif
-    for(y=0;y<(int)screen->height;y++){
+    for(int y=0;y<(int)screen->height;y++){
         for(x=0;x<(int)screen->width;x++){
             // 視線ベクトルの生成
             vv = screen->getViewVector(scene->vp, x, y);

@@ -2,6 +2,8 @@
 #define _INC_443PHOTON
 #include<sys/time.h>
 
+/** @file */
+
 double get_dtime(void){
     struct timeval tv;
     gettimeofday(&tv, NULL);

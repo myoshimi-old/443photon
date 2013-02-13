@@ -10,18 +10,28 @@
 
 using namespace std;
 
+
+
+/** @file scene.hpp
+ *  @class Scene
+ *  @brief シーンクラスヘッダ
+ */
 class Scene{
 public:
-    Vector3  vp;
-    Vector3* vertex;
-    Polygon3* face;
-    AABB3** bbox;
-    AABB3* tree;
-    Vector3**  d_vec;
-    int NumVertex;
-    int NumFace;
+    Vector3  vp; //!< 視点位置 
+    Vector3* vertex; //!< 頂点位置の配列
+    Polygon3* face;  //!< ポリゴンの配列 
+    AABB3** bbox;    //!< BVH (Bounding Volume Hierarchy)
+    AABB3* tree;     //!< BVHのルートへのポインタ
+    Vector3**  d_vec; //!< ソート対象となるデータの配列
+    int NumVertex; //!< 頂点数
+    int NumFace; //!< ポリゴン数
     
+    /** @brief コンストラクタ
+     */
     Scene(){};
+    /** @brief デストラクタ
+     */
     ~Scene(){};
     void load_ply(string filename);
     void generateTree();

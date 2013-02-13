@@ -9,9 +9,8 @@
 using namespace std;
 using namespace cv;
 
-// ===========================================================
-// 視線ベクトルの生成 (いずれScreenクラスに移動)
-// ===========================================================
+/** @file */
+
 Vector3 Screen::getViewVector(Vector3 viewPoint, int x, int y){
     Vector3 ret;
     Vector3 sp; // 画素のベクトル位置
@@ -50,7 +49,6 @@ Screen::Screen(UINT32 w_, UINT32 h_){
 };
 
 void Screen::writePng(string file){
-  int x, y;
   Mat mat;
   Mat3b m;
   IplImage output;
@@ -58,8 +56,8 @@ void Screen::writePng(string file){
   mat.create(height, width, CV_8UC3);
   m = mat;
 
-  for(y=0;y<(int)height;y++){
-    for(x=0;x<(int)width;x++){
+  for(int y=0;y<(int)height;y++){
+    for(int x=0;x<(int)width;x++){
       m(Point(x, y)) = Vec3b((int)pixel[y * width + x].blue,
                              (int)pixel[y * width + x].green,
                              (int)pixel[y * width + x].red);

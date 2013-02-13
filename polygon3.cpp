@@ -8,6 +8,8 @@
 
 using namespace std;
 
+/** @file */
+
 // 物体定義の抽象クラス
 /*
 class Model{

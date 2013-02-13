@@ -5,6 +5,8 @@
 #include "color.hpp"
 #include "vector3.hpp"
 
+/** @file */
+
 class Light{
 public:
     Vector3 position;
