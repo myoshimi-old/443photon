@@ -35,9 +35,7 @@ int main(int argc, char** argv){
     
     srand((unsigned int)time(NULL));
     
-    d0 = get_dtime();
     
-    d1 = get_dtime();
 
     // スクリーンの設定
     Screen *screen;
@@ -53,11 +51,12 @@ int main(int argc, char** argv){
     Scene *scene;
     scene = new Scene();
 
+    d0 = get_dtime();
     scene->load_ply(inputFilename);
-    scene->generateTree();
-
-    scene->tree->disp();
     
+    d1 = get_dtime();
+    scene->generateTree();
+    scene->tree->disp();
     // 視点の設定
     scene->vp.setVector(0.0, 0.03, 1.5);
     cout << "  ViewPoint : ";

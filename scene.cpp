@@ -13,6 +13,11 @@
 /** @file  scene.cpp
  *  @brief シーンクラス実装ファイル
  */
+
+/** @brief エンディアンの変換
+    @param[in]  array 対象を文字型の配列として見たときのアドレス
+    @param[in]  size  配列長(バイト数)
+*/
 void convertEndian(char* array, int size){
     char tmp;
     char *head, *tail;
@@ -29,9 +34,13 @@ void convertEndian(char* array, int size){
     }
 };
 
-
-// 視線ベクトル，光線ベクトル，物体の法線ベクトル(単位ベクトル)，
-// 物体の色，重み
+/** @brief シェーディング
+    @param[in]  view_vector 視線ベクトル
+    @param[in]  light       光線ベクトル
+    @param[in]  n           物体の法線ベクトル(単位ベクトル)
+    @param[in]  color       物体の色
+    @param[in]  s           重み
+*/
 Color Scene::shading(Vector3 view_vector,
                      Vector3 light, Vector3 n,
                      Color color, REAL s){
@@ -70,6 +79,11 @@ Color Scene::shading(Vector3 view_vector,
     return c;
 };
 
+/** @brief AABB3配列のソート
+    @param[in]  s          開始要素
+    @param[in]  e          終端要素+1
+    @param[in]  flag       ソート対象指定フラグ
+*/
 void Scene::sortingbox(int s, int e, int flag){
     int l, r;
     Vector3* t;
@@ -123,43 +137,13 @@ void Scene::sortingbox(int s, int e, int flag){
     }
 }
 
-/*
-void Scene::sortingbox(int s, int e, int flag){
-    AABB3* tmp;
-    AABB3* min;
-    int minid;
-    REAL t1, t2;
-
-    for(int i=s;i<e;i++){
-        minid = i;
-        min = bbox[i];
-        for(int j=i+1;j<e;j++){
-            switch(flag){
-            case 0:
-                t1 = bbox[j]->get_gravity_center().x;
-                t2 = bbox[minid]->get_gravity_center().x;
-                break;
-            case 1:
-                t1 = bbox[j]->get_gravity_center().y;
-                t2 = bbox[minid]->get_gravity_center().y;
-                break;
-            default:
-                t1 = bbox[j]->get_gravity_center().z;
-                t2 = bbox[minid]->get_gravity_center().z;
-                break;
-            }
-            if(t1 < t2){
-                minid = j;
-            }
-        }
-        tmp = bbox[i];
-        bbox[i] = bbox[minid];
-        bbox[minid] = tmp;
-    }
-}
+/** @brief トラバーサル処理
+    @param[in]  id ノード番号
+    @param[in]  ptr トラバーサル対象AABB3ノードへのポインタ
+    @param[in,out] minDist 現在の交差最短距離
+    @param[in]  viewPoint 視点(レイ照射開始点)
+    @param[in]  viewVector 視線ベクトル
 */
-
-
 Polygon3* Scene::traversal(int id, AABB3* ptr, REAL* minDist,
                            Vector3 viewPoint, Vector3 viewVector){
     
