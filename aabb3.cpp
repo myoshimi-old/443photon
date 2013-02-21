@@ -33,6 +33,17 @@ void AABB3::disp(){
     min.disp();
 };
 
+void AABB3::getGraph(char* str, int n){
+    char  s1[32];
+    char  s2[32];
+    max.getGraph(s1);
+    min.getGraph(s2);
+    sprintf(str, "  s%d [label=\""
+            "{<n%d>|x|y|<m%d>z}|"
+            "{max|%s}|{min|%s}\"];\n",
+            n, n, n,s1,s2);
+};
+
 void AABB3::empty(){
     right = NULL;
     left  = NULL;

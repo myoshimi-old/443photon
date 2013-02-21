@@ -56,6 +56,7 @@ int main(int argc, char** argv){
     
     d1 = get_dtime();
     scene->generateTree();
+    // scene->genTreeGraph();
     scene->tree->disp();
     // 視点の設定
     scene->vp.setVector(0.0, 0.03, 1.5);

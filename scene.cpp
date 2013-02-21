@@ -3,6 +3,8 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
+#include<queue>
+#include<stack>
 
 #include"aabb3.hpp"
 #include"scene.hpp"
@@ -136,6 +138,70 @@ void Scene::sortingbox(int s, int e, int flag){
         sortingbox(s+(e-s)/2, e, flag);
     }
 }
+
+void Scene::genTreeGraph(){
+    AABB3* ptr;
+    int i;
+    char str[256];
+    queue<AABB3*> q;
+    stack<AABB3*> s;
+
+    s.push(tree);
+
+    while(!s.empty()){
+        ptr = s.top();
+        s.pop();
+        q.push(ptr);
+        if(ptr->left != NULL){
+            s.push(ptr->left);
+        }
+        if(ptr->right != NULL){
+            s.push(ptr->right);
+        }
+    }
+    
+    printf("digraph sample {\n");
+    printf("  node [shape=record];\n");
+
+    ptr  = tree;
+    i = 1;
+
+    while(!q.empty()){
+        ptr = q.front();
+        ptr->getGraph(str, i);
+        printf("%s", str);
+        if(i != 1){
+            printf("  s%d:m%d->s%d:n%d;\n", i/2, i/2, i, i);
+        }
+        q.pop();
+        i++;
+    }
+
+
+
+/*
+    gptr = new AABB3Graph();
+    gptr->add(i, ptr);
+    printf(gptr->str);
+
+    ptr  = ptr->left;
+    gptr = gptr->next;
+    i    = 2*i;
+
+    gptr = new AABB3Graph();
+    gptr->add(i, ptr);
+    printf(gptr->str);
+    
+    printf("  s%d:m%d->s%d:n%d;\n", i, i, 2*i+1, 2*i+1);
+
+
+    ptr->right->getGraph(&s[0], 2*i+2);
+    printf("%s", s);
+    printf("  s%d:m%d->s%d:n%d;\n", i, i, 2*i+2, 2*i+2);
+    */
+    
+    printf("}\n");
+};
 
 /** @brief トラバーサル処理
     @param[in]  id ノード番号

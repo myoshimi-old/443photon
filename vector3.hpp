@@ -3,11 +3,11 @@
 
 #include "443ray.hpp"
 
+using namespace std;
 /** @file vector3.hpp
     @class Vector3
     @brief 3次元ベクトル表現クラスヘッダ
  */
-
 class Vector3{
 public:
     REAL x, y, z;
@@ -25,6 +25,7 @@ public:
     Vector3 operator/(REAL t);
     static Vector3 cross(Vector3 a, Vector3 b); // 外積
     static REAL dot(Vector3 a, Vector3 b); // 内積
+    void getGraph(char* str);
     void disp();
 };
 

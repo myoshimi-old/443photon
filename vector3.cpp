@@ -27,6 +27,11 @@ void Vector3::setVector(REAL x_, REAL y_, REAL z_){
     x = x_; y = y_; z = z_;
 };
 
+void Vector3::getGraph(char* str){
+    //strcpy(str, "hoge");
+    sprintf(str, "%6.4f|%6.4f|%6.4f", x, y, z);
+};
+
 /** @brief ベクトルに値を設定
     @param[in]  v  Vector3オブジェクト
 */

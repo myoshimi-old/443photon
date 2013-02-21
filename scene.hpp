@@ -35,6 +35,7 @@ public:
     ~Scene(){};
     void load_ply(string filename);
     void generateTree();
+    void genTreeGraph();
     Polygon3* traversal(int id, AABB3* ptr, REAL* minDist,
                         Vector3 viewPoint, Vector3 viewVector);
     int partition(int s, int e, int flag);
